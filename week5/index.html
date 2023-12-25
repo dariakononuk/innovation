@@ -1,6 +1,6 @@
 <html>
 
-    <голова>
+    <head>
         <title>Початковий набір A-Frame — мініанімований планетарій</title>
         <meta name="description" content="Створіть власний планетарій з А-образною рамою">
         <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
@@ -11,8 +11,8 @@
         <script src="https://unpkg.com/aframe-orbit-controls@1.2.0/dist/aframe-orbit-controls.min.js"></script>
     </head>
 
-    <тіло>
-        <сцена>
+    <body>
+        <scene>
 
             <!-- Це "міксин", який ми можемо застосувати до планет, щоб створити їх
             обертати-->
@@ -48,17 +48,16 @@
                 <a-asset-item id="asteroids" response-type="arraybuffer" src="https://cdn.glitch.com/d558c128-2ed0-4284-a0da-4d18b9163ad6%2Fasteroides.glb?1541106805090"></ a-asset-item>
             </a-assets>
 
-            <!-- Дайте базове освітлення тут. Навколишнє освітлення освітлює
-            всю сцену і переконатися, що ми все ще можемо бачити наші каблучки. -->
+            
             <a-entity id="basic-light" light="type: ambient; color: #BBB"></a-entity>
 
-            <!--використовуйте наші нові орбітальні елементи-->
+            
             <a-entity camera look-controls orbit-controls="target: 0 1.6 -0.5; initialPosition: -5 5 20"></a-entity>
 
             <a-sky color="black"></a-sky>
             <a-entity star-system="count: 1000; radius: 250; depth: 0"></a-entity>
 
-            <!-- великі кільця, які ми можемо використовувати для орбіти -->
+            
             <a-entity geometry="primitive: torus; radius: 3; radiusTubular: 0.01;segmentsTubular: 50" material="color: #FFFFFF;opacity: 0.3"
                 rotation="90 0 0" scale="2 2 0.1"></a-entity>
             <a-entity geometry="primitive: torus; radius: 4.24; radiusTubular: 0.01;segmentsTubular: 50" material="color: #FFFFFF;opacity: 0.3"
@@ -79,15 +78,14 @@
                 rotation="90 0 0" scale="2 2 0.1"></a-entity>
 
 
-            <!-- давайте змусимо сонце обертатися і випромінювати світло!-->
+            
             <a-sphere id="sun" position="0 0 0" radius="4" src="#sun-texture" mixin="rotation" light="type: point"
                 material="shader: flat;"></a-sphere>
 
             <a-entity id="asteroid-belt" gltf-model="#asteroids" scale="2.1 2.1 2.1" position="0 0 0" mixin="rotation"
                 animation="dur: 60000;"></a-entity>
 
-            <!-- наші основні планети, ми збираємося загорнути їх, щоб ми могли застосувати
-            обертається до них, а також надає їм обертання-->
+            
             <a-entity id="orbit-mercury" mixin="orbit" animation="dur: 20000;">
                 <a-sphere id="mercury" position="0 0 6" radius=".4" src="#mercury-texture" mixin="orbit"></a-sphere>
             </a-entity>
@@ -109,7 +107,7 @@
             </a-entity>
 
 
-            <!--тут дві орбіти - сама Земля та Земля навколо Місяця-->
+            
             <a-entity id="orbit-earth" mixin="orbit" animation="dur: 30000;">
                 <a-entity id="earth-and-moon" position="0 0 10.5">
                     <a-entity id="earth-container">
@@ -121,7 +119,7 @@
                 </a-entity>
             </a-entity>
 
-            <!--нам потрібно буде ще більше загорнути їх, щоб наші орбіти запрацювали-->
+            
             <a-entity id="orbit-saturn" mixin="orbit">
                 <a-entity id="saturn-container" position="0 0 31">
                     <a-sphere radius="1.8" id="saturn" src="#saturn-texture" mixin="rotation"></a-sphere>
